@@ -12,6 +12,7 @@ sceene.oemodel should be in special format, there is no publicly available autho
 * or programmatically create one (see Useful links section below for source code of decoder; based on which it is not hard to create an encoder)
 
 Put them next to script
+
 `./seene-upload.sh your_seene_nick`
 
 Creates a private seene.
@@ -40,7 +41,7 @@ To jq author.
 To mitmproxy authors.
 ## Example output
 ```
-macMini:seene-uploader paf$ ./auth.sh #not published, todo: replace with autokeydiscovery
+macMini:seene-uploader paf$ . auth.sh #not published, todo: replace with autokeydiscovery
 macMini:seene-uploader paf$ ./seene-upload.sh
 creating entry
 ######################################################################## 100,0%
