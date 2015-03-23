@@ -8,6 +8,7 @@ TODO: AUTHORIZATION PART IS NOT READY YET, CONTACT ME IF YOU WANT TO FIND OUT YO
 Create your model (scene.oemodel + poster.jpg). 
 
 sceene.oemodel should be in special format, there is no publicly available authoring tool for that (yet), so
+* at first use some from provided examples/, then
 * either use one of backed up (see https://github.com/neopaf/seene-uploader)
 * or programmatically create one (see Useful links section below for source code of decoder; based on which it is not hard to create an encoder)
 
