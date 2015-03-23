@@ -6,7 +6,7 @@ then
 	exit 1
 fi
 
-caption='Uploaded by https://github.com/neopaf/seene-uploader'
+caption='#synthetic (Uploaded by https://github.com/neopaf/seene-uploader by @PAF)'
 captured_at=$(LANG= date -u +"%Y-%m-%dT%H:%M:%SZ")
 dateHeaderValue=$(LANG= date +"%a, %d %b %Y %T %z")
 
@@ -58,5 +58,6 @@ amazon_upload "$poster_dir" poster.jpg image/jpeg
 #not to depend on above code, while debugging I comment it out often
 scene_id=$(cat entry.json|jq -r .scene.identifier)
 echo 'finalizing'
-api_request PATCH https://oecamera.herokuapp.com/api/scenes/$scene_id "caption=$caption&captured_at=$captured_at&filter_code=none&finalize=1&flash_level=0&identifier=$scene_id&latitude&location&longitude&orientation=0&shared=0&storage_version=3"
+api_request PATCH https://oecamera.herokuapp.com/api/scenes/$scene_id "caption=$caption&captured_at=$captured_at&filter_code=none&finalize=1&flash_level=0&identifier=$scene_id&latitude&location&longitude&orientation=0&shared=0&storage_version=3" > exit.json
 
+cat exit.json | jq -r '[.short_url, .state, "(was uploaded but is private now)"]|join(" ")'

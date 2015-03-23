@@ -48,5 +48,7 @@ creating entry
 uploading model
 uploading image
 finalizing
-{"cached_at":"2015-03-22T22:51:10.663+00:00"...
+######################################################################## 100,0%
+http://seene.co/s/iV1C6Z ready (was uploaded but is private now)
+macMini:seene-uploader paf$ 
 ```
