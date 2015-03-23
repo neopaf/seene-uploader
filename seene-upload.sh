@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$AUTHORIZATION" ]
+then
+	echo "Contact author to learn how to get your authorisation in"
+	exit 1
+fi
+
 caption='Uploaded by https://github.com/neopaf/seene-uploader'
 captured_at=$(LANG= date -u +"%Y-%m-%dT%H:%M:%SZ")
 dateHeaderValue=$(LANG= date +"%a, %d %b %Y %T %z")
