@@ -1,6 +1,8 @@
 ## About
 http://seene.co/ uploader 
 
+See some of results: http://seene.co/search/seenes/?q=synthetic
+
 TODO: AUTHORIZATION PART IS NOT READY YET, CONTACT ME IF YOU WANT TO FIND OUT YOUR ID.
 (I do not yet know how to convert your_seene_nick to necessary id)
 
