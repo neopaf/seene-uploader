@@ -6,6 +6,18 @@ then
 	exit 1
 fi
 
+if ! [ -f poster.jpg ]
+then
+	echo 'Current folder has no poster.jpg, please create it (or get from examples)'
+	exit 1
+fi
+
+if ! [ -f scene.oemodel ]
+then
+        echo 'Current folder has no scene.oemodel, please create it (or get from examples)'
+        exit 1
+fi
+
 caption='#synthetic (Uploaded by https://github.com/neopaf/seene-uploader by @PAF)'
 captured_at=$(LANG= date -u +"%Y-%m-%dT%H:%M:%SZ")
 dateHeaderValue=$(LANG= date +"%a, %d %b %Y %T %z")
