@@ -1,5 +1,9 @@
 #!/bin/bash
 
+caption='Uploaded by https://github.com/neopaf/seene-uploader'
+captured_at=$(LANG= date -u +"%Y-%m-%dT%H:%M:%SZ")
+dateHeaderValue=$(LANG= date +"%a, %d %b %Y %T %z")
+
 function api_request {
 method="$1"
 url="$2"
@@ -17,23 +21,19 @@ dir="$1"
 file="$2"
 content_type="$3"
 resource="/$bucket_name/$dir/$file"
-dateValue=$(LANG= date +"%a, %d %b %Y %T %z")
-stringToSign="PUT\n\n${content_type}\n${dateValue}\nx-amz-acl:public-read\nx-amz-security-token:$session_token\n${resource}"
+stringToSign="PUT\n\n${content_type}\n${dateHeaderValue}\nx-amz-acl:public-read\nx-amz-security-token:$session_token\n${resource}"
 signature=`echo -en "$stringToSign" | openssl sha1 -hmac "$secret_access_key" -binary | base64`
 curl -# -X PUT -T "${file}" \
   -H "Host: $bucket_name.s3.amazonaws.com" \
   -H "Authorization: AWS ${access_key_id}:${signature}" \
   -H "x-amz-acl: public-read" \
   -H "x-amz-security-token: $session_token" \
-  -H "Date: ${dateValue}" \
+  -H "Date: ${dateHeaderValue}" \
   -H "Content-Type: $content_type" \
   "https://$bucket_name.s3.amazonaws.com/$dir/$file"
 }
 
 request_id=`uuidgen|tr "[A-Z]" "[a-z]"`
-caption='Test5'
-captured_at='2015-03-22T23%3A47%3A43Z'
-
 echo 'creating entry'
 api_request POST https://oecamera.herokuapp.com/api/scenes "caption=$caption&captured_at=$captured_at&filter_code=none&flash_level=0&identifier=$scene_id&latitude&location&longitude&orientation=0&shared=0&storage_version=3" > entry.json
 
